@@ -14,3 +14,9 @@ Preview: `node preview.mjs`, then open http://127.0.0.1:4173. Stop with Ctrl+C.
 Deploy the static root of `main` through GitHub Pages. Keep `.nojekyll`. Commit generated HTML alongside sources. `build.mjs` and `preview.mjs` are development utilities, not browser scripts.
 
 The small download counter in both languages sums ZIP and EXE release-asset download counts across all releases of this public repository using the GitHub API. Publish the packages as releases here and point `releases.json` at those assets. GitHub source-code archives and externally hosted files are not counted. API errors display an unavailable state; no visitor analytics or click tracking is used.
+
+## Screenshot gallery
+
+The hero and gallery use real application renders with synthetic demonstration data only. Both languages include copy, compression, analyzer, image/audio conversion, CSV preview and editor. The numbered markers are inherited from the user guide. Every image was visually reviewed before publication. Compression was rendered from ArchivePackDialog with an isolated test profile and the fictional C:\Examples\Archive\Documents.zip destination. No user files were selected or copied. Other images originate from HelpScreenshotTests and EditorAnalyzerScreenshotTests fixtures in the application user guide.
+
+Edit gallery.mjs for gallery text and gallery.css for layout. gallery.js adds a native dialog with keyboard dismissal; image links work without JavaScript.
