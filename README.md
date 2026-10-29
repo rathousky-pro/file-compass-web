@@ -12,3 +12,5 @@ Bilingual static website for GitHub Pages. Application sources are maintained se
 Preview: `node preview.mjs`, then open http://127.0.0.1:4173. Stop with Ctrl+C.
 
 Deploy the static root of `main` through GitHub Pages. Keep `.nojekyll`. Commit generated HTML alongside sources. `build.mjs` and `preview.mjs` are development utilities, not browser scripts.
+
+The small download counter in both languages sums ZIP and EXE release-asset download counts across all releases of this public repository using the GitHub API. Publish the packages as releases here and point `releases.json` at those assets. GitHub source-code archives and externally hosted files are not counted. API errors display an unavailable state; no visitor analytics or click tracking is used.
