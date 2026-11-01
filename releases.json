@@ -1,5 +1,10 @@
 {
-  "version": "0.9.5 beta",
-  "zip": null,
-  "exe": null
+  "version": "0.9.5 beta · 20261101.67",
+  "channel": "beta",
+  "access": "restricted",
+  "repository": "rathousky-pro/file-compass",
+  "zip": "https://github.com/rathousky-pro/file-compass/releases/download/v0.9.5-beta.20261101.67/FileCompass-0.9.5-beta-20261101.67-win-x64.zip",
+  "exe": null,
+  "notes": "https://github.com/rathousky-pro/file-compass/releases/tag/v0.9.5-beta.20261101.67",
+  "checksum": "https://github.com/rathousky-pro/file-compass/releases/download/v0.9.5-beta.20261101.67/FileCompass-0.9.5-beta-20261101.67-win-x64.zip.sha256"
 }

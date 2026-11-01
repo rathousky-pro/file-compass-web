@@ -7,13 +7,15 @@ Bilingual static website for GitHub Pages. Application sources are maintained se
 - `style.css`: responsive design with keyboard focus and reduced-motion support.
 - `privacy.html` and `privacy-cs.html`: privacy policy. Retain Google verification metadata in the homepage.
 - `assets/`: application branding and application screenshots with synthetic demonstration data. The hero is an actual application screenshot.
-- `releases.json`: set `zip` and `exe` to public HTTPS asset URLs when packages are published. Null keeps the respective button disabled. Update `version` and version text in `build.mjs` for a new release. Never publish local runtime/configuration data.
+- `releases.json`: HTTPS asset URLs, version/channel, source repository, access mode, release notes and checksum link. Null keeps the respective format disabled. Run `node build.mjs` after changes: download links and access notices are generated into both pages and work without JavaScript. Never publish local runtime/configuration data.
 
 Preview: `node preview.mjs`, then open http://127.0.0.1:4173. Stop with Ctrl+C.
 
 Deploy the static root of `main` through GitHub Pages. Keep `.nojekyll`. Commit generated HTML alongside sources. `build.mjs` and `preview.mjs` are development utilities, not browser scripts.
 
-The small download counter in both languages sums ZIP and EXE release-asset download counts across all releases of this public repository using the GitHub API. Publish the packages as releases here and point `releases.json` at those assets. GitHub source-code archives and externally hosted files are not counted. API errors display an unavailable state; no visitor analytics or click tracking is used.
+The download counter sums ZIP and EXE release-asset downloads from the repository configured in `releases.json`. Source-code archives are not counted. For restricted/private downloads the counter explicitly says that counts are not public and makes no GitHub API request. Public API errors display an unavailable state; no visitor analytics or click tracking is used.
+
+The current ZIP is the unsigned 0.9.5 beta / build 20261101.67 from the private application repository. Both languages visibly identify it as beta and explain that GitHub repository access is required. The public website does not grant that access or expose credentials. The Windows installer remains unavailable. Do not mark the ZIP as public until its hosting/access and the application's distribution prerequisites have actually been resolved.
 
 ## Screenshot gallery
 

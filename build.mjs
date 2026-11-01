@@ -1,5 +1,6 @@
 import {gallery,shot} from './gallery.mjs';
 import {readFileSync, writeFileSync} from 'node:fs';
+const release = JSON.parse(readFileSync(new URL('./releases.json',import.meta.url),'utf8'));
 const copy = {
 en: {
 title:'File Compass — Your files. A clear direction.', description:'A Windows file manager by Jan Rathouský. Two panels, network and cloud connections, archives, previews and tools to keep your files in order.',
@@ -25,6 +26,30 @@ authorEye:'Vytváří Rathousky.pro',authorTitle:'Osobní projekt.<br>Praktický
 }};
 const icons=['<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M6 8h3m6 0h3M6 12h3m6 0h3"/>','<path d="M4 7h15m-4-4 4 4-4 4M20 17H5m4-4-4 4 4 4"/>','<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>','<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M10 3v4h4v4h-4v4h4v4"/>','<path d="m4 16 12-12 4 4L8 20H4v-4Zm9-9 4 4M4 4h5M16 20h4"/>','<path d="M4 3v17h17M8 15v-4m5 4V7m5 8V4"/>'];
 const esc = s => s.replaceAll('&','&amp;').replaceAll('"','&quot;');
+Object.assign(copy.cs, {
+ downloadText:'Přenosná beta je připravená k testování. Instalátor pro Windows zatím připravujeme.',
+ zipTitle:'Přenosný ZIP · beta',
+ zipText:'Verze 0.9.5 beta · build 20261101.67 · 122 MiB · Windows x64. Rozbalte složku FileCompass a spusťte File Compass.exe.',
+ betaDownload:'Stáhnout beta ZIP ↓',
+ restricted:'Tato beta je zatím dostupná pouze uživatelům s přístupem k soukromému repozitáři na GitHubu.',
+ releaseNotes:'Poznámky k beta verzi',checksum:'Kontrolní součet SHA-256',
+ downloadNote:'Beta verze může obsahovat chyby. EXE zatím není digitálně podepsané, takže Windows nebo antivirus mohou zobrazit upozornění. Vyžaduje .NET Framework 4.8; náhledy dokumentů také systémový WebView2 Runtime.'
+});
+Object.assign(copy.en, {
+ downloadText:'The portable beta is ready for testing. The Windows installer is still being prepared.',
+ zipTitle:'Portable ZIP · beta',
+ zipText:'Version 0.9.5 beta · build 20261101.67 · 122 MiB · Windows x64. Extract the FileCompass folder and run File Compass.exe.',
+ betaDownload:'Download beta ZIP ↓',
+ restricted:'This beta currently requires access to the private GitHub repository.',
+ releaseNotes:'Beta release notes',checksum:'SHA-256 checksum',
+ downloadNote:'This beta may contain bugs. The executable is not digitally signed yet, so Windows or antivirus software may show a warning. Requires .NET Framework 4.8; document previews also use the system WebView2 Runtime.'
+});
+function packageAction(format,t){
+ const value=release[format];
+ if(!value)return `<button class="button" disabled data-download="${format}">${t.soon} · ${format.toUpperCase()}</button>`;
+ const url=new URL(value);if(url.protocol!=='https:')throw new Error('Downloads must use HTTPS');
+ return `<a class="button primary" data-download="${format}" href="${esc(url.href)}">${format==='zip'?t.betaDownload:format.toUpperCase()}</a>`;
+}
 for (const [lang,t] of Object.entries(copy)) {
  const home = lang==='en'?'index.html':'cs.html';
  const privacy = lang==='en'?'privacy.html':'privacy-cs.html';
@@ -36,7 +61,7 @@ for (const [lang,t] of Object.entries(copy)) {
 <section class="section storage" id="storage"><div class="wrap split"><div><div class="eyebrow">${t.storageEye}</div><h2>${t.storageTitle}</h2><p class="section-intro">${t.storageText}</p><div class="protocols">SMB &nbsp;·&nbsp; FTP / FTPS &nbsp;·&nbsp; SFTP / SCP &nbsp;·&nbsp; NFS &nbsp;·&nbsp; SSH</div><p class="privacy-note">${t.storageNote}</p><a class="text-link" href="${privacy}">${t.privacy} →</a></div><div class="storage-diagram"><div class="orbit" aria-hidden="true"></div><div class="hub"><img src="assets/floppy-orbit.svg" width="60" height="60" alt="File Compass"></div>${[t.localDisk,'Google Drive',t.network,'OneDrive','SFTP / FTP','Dropbox'].map((n,i)=>`<span class="endpoint ep${i+1}">${n}</span>`).join('')}</div></div></section>
 ${gallery(lang)}
 <section class="section wrap showcase"><div class="screenshot-block">${shot(lang,"panels",t.screenshotAlt)}<p class="caption">${t.screenshot}</p></div><div><div class="eyebrow">${t.previewEye}</div><h2>${t.previewTitle}</h2><p>${t.previewText}</p><ul class="checklist">${t.checks.map(n=>`<li>${n}</li>`).join('')}</ul></div></section>
-<section class="wrap" id="download"><div class="download"><div class="download-top"><div><div class="eyebrow">${t.downloadEye}</div><h2>${t.downloadTitle}</h2><p>${t.downloadText}</p></div><span class="release-badge">0.9.5 beta · Windows</span></div><div class="download-options">${['zip','exe'].map(format=>`<article class="download-option"><h3>${format==='zip'?t.zipTitle:t.exeTitle} <span aria-hidden="true">${format==='zip'?'↙':'↓'}</span></h3><p>${format==='zip'?t.zipText:t.exeText}</p><button class="button" disabled data-download="${format}">${t.soon} · ${format.toUpperCase()}</button><span class="availability" data-status="${format}">${t.availability}</span></article>`).join('')}</div><p class="download-count" data-download-count aria-live="polite">${lang === 'cs' ? 'Celkem stažení' : 'Total downloads'}: <span data-download-total>…</span> <span class="download-count-formats">(ZIP + EXE)</span></p><p class="privacy-note">${t.downloadNote}</p></div></section>
+<section class="wrap" id="download"><div class="download"><div class="download-top"><div><div class="eyebrow">${t.downloadEye}</div><h2>${t.downloadTitle}</h2><p>${t.downloadText}</p></div><span class="release-badge">0.9.5 beta · Windows</span></div><div class="download-options">${['zip','exe'].map(format=>`<article class="download-option"><h3>${format==='zip'?t.zipTitle:t.exeTitle} <span aria-hidden="true">${format==='zip'?'↙':'↓'}</span></h3><p>${format==='zip'?t.zipText:t.exeText}</p>${packageAction(format,t)}<span class="availability" data-status="${format}">${release[format]?esc(release.version):t.availability}</span>${format==='zip'&&release[format]&&release.access==='restricted'?`<p class="beta-access" role="note">${t.restricted}</p>`:''}${format==='zip'&&release[format]?`<div class="release-links"><a href="${esc(release.notes)}">${t.releaseNotes}</a><a href="${esc(release.checksum)}">${t.checksum}</a></div>`:''}</article>`).join('')}</div><p class="download-count" data-download-count aria-live="polite">${release.access==='restricted'?(lang==='cs'?'Počet stažení':'Download count'):(lang==='cs'?'Celkem stažení':'Total downloads')}: <span data-download-total>${release.access==='restricted'?(lang==='cs'?'není veřejný':'not public'):'…'}</span> <span class="download-count-formats">(ZIP + EXE)</span></p><p class="privacy-note">${t.downloadNote}</p></div></section>
 <section class="wrap author" id="about"><div class="author-mark"><img src="assets/rathousky-pro.png" alt="Rathousky.pro" loading="lazy"></div><div><div class="eyebrow">${t.authorEye}</div><h2>${t.authorTitle}</h2><p>${t.authorText}</p><p>${t.authorContact}</p><a class="text-link" href="mailto:jan.rathousky.kladno@gmail.com">${t.contact} ↗</a></div></section></main>
 <footer class="footer"><div class="wrap"><span>© 2026 Rathousky.pro &nbsp;·&nbsp; ${t.footer}</span><div class="footer-links"><a href="${privacy}">${t.privacyLabel}</a><a href="https://github.com/rathousky-pro/file-compass-web">${t.source}</a><a href="#top">${t.top} ↑</a></div></div></footer></body></html>`);
 }

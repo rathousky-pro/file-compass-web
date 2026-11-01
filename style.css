@@ -5,3 +5,4 @@
 @media(max-width:640px){.file-row.table-head{font-size:7px;letter-spacing:.4px}.actions .button{font-size:11px;padding-left:12px;padding-right:12px}}
 
 .download-count{margin:18px 0 0;color:var(--muted,#64748b);font-size:12px}.download-count [data-download-total]{font-weight:600;font-variant-numeric:tabular-nums}.download-count-formats{opacity:.75}
+.download-option .beta-access{min-height:0;margin:16px 0 0;padding:12px;border:1px solid #86c5ff66;border-radius:8px;background:#ffffff0a;color:#e4f2ff;font-size:13px;line-height:1.55}.release-links{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:16px;font-size:12px}.release-links a{color:#a6d8ff;text-decoration:underline;text-underline-offset:3px}.release-links a:focus-visible{outline:2px solid #a6d8ff;outline-offset:4px}
