@@ -7,3 +7,10 @@ if(viewer && typeof viewer.showModal==='function'){
  }));
  viewer.addEventListener('click',event=>{if(event.target===viewer){const box=viewer.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)viewer.close();}});
 }
+
+const filters=document.querySelector('.gallery-filters');
+if(filters){
+ filters.hidden=false;
+ const cards=[...document.querySelectorAll('[data-gallery-group]')],count=document.querySelector('[data-gallery-count]');
+ filters.addEventListener('click',event=>{const button=event.target.closest('[data-gallery-filter]');if(!button)return;const group=button.dataset.galleryFilter;filters.querySelectorAll('button').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));cards.forEach(card=>card.hidden=group!=='all'&&card.dataset.galleryGroup!==group);if(count)count.textContent=count.dataset.label+': '+cards.filter(card=>!card.hidden).length;});
+}
