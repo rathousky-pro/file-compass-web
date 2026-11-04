@@ -19,7 +19,7 @@ The current ZIP is the unsigned 0.9.5 beta / build 20261101.67 from the private 
 
 ## Screenshot gallery
 
-The hero and gallery use current application renders captured on 1 November 2026, with 28 scenes in each language (56 PNGs). Coverage includes panels, copy/progress/conflicts, deletion, archive creation/security, image/video previews/CSV/editor, image/audio conversion, image geometry/audio speed, metadata, analyzer, SMART, synchronization, rename, search, duplicates, network/cloud profiles, configuration and operation history.
+The hero and gallery use current application renders captured on 4 November 2026, with 28 scenes in each language (56 PNGs). Coverage includes panels, copy/progress/conflicts, deletion, archive creation/security, image/video previews/CSV/editor, image/audio conversion, image geometry/audio speed, metadata, analyzer, SMART, synchronization, rename, search, duplicates, network/cloud profiles, configuration and operation history.
 
 All files were generated specifically for these screenshots. Network and cloud profiles use fictional names and the reserved `example.test` domain; no connection, authorization, real hardware scan or destructive operation was performed. SMART values and transfer-progress figures are synthetic fixtures. Local fixture paths are replaced by `C:\Examples` in the presentation, and visible text is audited before export. No user files, personal paths or credentials are published. The standalone PNGs are real WPF window renders without annotations or invented controls. `assets/screenshots/manifest.json` records image dimensions and SHA-256 checksums.
 
