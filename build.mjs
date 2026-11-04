@@ -29,7 +29,7 @@ const esc = s => s.replaceAll('&','&amp;').replaceAll('"','&quot;');
 Object.assign(copy.cs, {
  downloadText:'Přenosná beta je připravená k testování. Instalátor pro Windows zatím připravujeme.',
  zipTitle:'Přenosný ZIP · beta',
- zipText:'Verze 0.9.5 beta · build 20261101.67 · 122 MiB · Windows x64. Rozbalte složku FileCompass a spusťte File Compass.exe.',
+ zipText:`${release.version} · ${Math.ceil((release.sizeBytes || 0)/1048576)} MiB · Windows x64. Rozbalte ZIP a spusťte File Compass.exe.`,
  betaDownload:'Stáhnout beta ZIP ↓',
  restricted:'Tato beta je zatím dostupná pouze uživatelům s přístupem k soukromému repozitáři na GitHubu.',
  releaseNotes:'Poznámky k beta verzi',checksum:'Kontrolní součet SHA-256',
@@ -38,7 +38,7 @@ Object.assign(copy.cs, {
 Object.assign(copy.en, {
  downloadText:'The portable beta is ready for testing. The Windows installer is still being prepared.',
  zipTitle:'Portable ZIP · beta',
- zipText:'Version 0.9.5 beta · build 20261101.67 · 122 MiB · Windows x64. Extract the FileCompass folder and run File Compass.exe.',
+ zipText:`${release.version} · ${Math.ceil((release.sizeBytes || 0)/1048576)} MiB · Windows x64. Extract the ZIP and run File Compass.exe.`,
  betaDownload:'Download beta ZIP ↓',
  restricted:'This beta currently requires access to the private GitHub repository.',
  releaseNotes:'Beta release notes',checksum:'SHA-256 checksum',
@@ -63,6 +63,6 @@ ${gallery(lang)}
 <section class="section wrap showcase"><div class="screenshot-block">${shot(lang,"panels",t.screenshotAlt)}<p class="caption">${t.screenshot}</p></div><div><div class="eyebrow">${t.previewEye}</div><h2>${t.previewTitle}</h2><p>${t.previewText}</p><ul class="checklist">${t.checks.map(n=>`<li>${n}</li>`).join('')}</ul></div></section>
 <section class="wrap" id="download"><div class="download"><div class="download-top"><div><div class="eyebrow">${t.downloadEye}</div><h2>${t.downloadTitle}</h2><p>${t.downloadText}</p></div><span class="release-badge">0.9.5 beta · Windows</span></div><div class="download-options">${['zip','exe'].map(format=>`<article class="download-option"><h3>${format==='zip'?t.zipTitle:t.exeTitle} <span aria-hidden="true">${format==='zip'?'↙':'↓'}</span></h3><p>${format==='zip'?t.zipText:t.exeText}</p>${packageAction(format,t)}<span class="availability" data-status="${format}">${release[format]?esc(release.version):t.availability}</span>${format==='zip'&&release[format]&&release.access==='restricted'?`<p class="beta-access" role="note">${t.restricted}</p>`:''}${format==='zip'&&release[format]?`<div class="release-links"><a href="${esc(release.notes)}">${t.releaseNotes}</a><a href="${esc(release.checksum)}">${t.checksum}</a></div>`:''}</article>`).join('')}</div><p class="download-count" data-download-count aria-live="polite">${release.access==='restricted'?(lang==='cs'?'Počet stažení':'Download count'):(lang==='cs'?'Celkem stažení':'Total downloads')}: <span data-download-total>${release.access==='restricted'?(lang==='cs'?'není veřejný':'not public'):'…'}</span> <span class="download-count-formats">(ZIP + EXE)</span></p><p class="privacy-note">${t.downloadNote}</p></div></section>
 <section class="wrap author" id="about"><div class="author-mark"><img src="assets/rathousky-pro.png" alt="Rathousky.pro" loading="lazy"></div><div><div class="eyebrow">${t.authorEye}</div><h2>${t.authorTitle}</h2><p>${t.authorText}</p><p>${t.authorContact}</p><a class="text-link" href="mailto:jan.rathousky.kladno@gmail.com">${t.contact} ↗</a></div></section></main>
-<footer class="footer"><div class="wrap"><span>© 2026 Rathousky.pro &nbsp;·&nbsp; ${t.footer}</span><div class="footer-links"><a href="${privacy}">${t.privacyLabel}</a><a href="https://github.com/rathousky-pro/file-compass-web">${t.source}</a><a href="#top">${t.top} ↑</a></div></div></footer></body></html>`);
+<footer class="footer"><div class="wrap"><span>© 2026 Rathousky.pro &nbsp;·&nbsp; ${t.footer}</span><div class="footer-links"><a href="https://github.com/rathousky-pro/file-compass/blob/main/LICENSE">MIT License</a><a href="https://github.com/rathousky-pro/file-compass">${lang==='cs'?'Zdrojový kód aplikace':'Application source'}</a><a href="${privacy}">${t.privacyLabel}</a><a href="https://github.com/rathousky-pro/file-compass-web">${t.source}</a><a href="#top">${t.top} ↑</a></div></div></footer></body></html>`);
 }
 console.log('Built English and Czech pages.');

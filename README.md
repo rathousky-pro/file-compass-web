@@ -7,7 +7,7 @@ Bilingual static website for GitHub Pages. Application sources are maintained se
 - `style.css`: responsive design with keyboard focus and reduced-motion support.
 - `privacy.html` and `privacy-cs.html`: privacy policy. Retain Google verification metadata in the homepage.
 - `assets/`: application branding and application screenshots with synthetic demonstration data. The hero is an actual application screenshot.
-- `releases.json`: HTTPS asset URLs, version/channel, source repository, access mode, release notes and checksum link. Null keeps the respective format disabled. Run `node build.mjs` after changes: download links and access notices are generated into both pages and work without JavaScript. Never publish local runtime/configuration data.
+- `releases.json`: HTTPS asset URLs, version/channel, release repository, access mode, release notes and checksum link. Null keeps the respective format disabled. Run `node build.mjs` after changes: download links and access notices are generated into both pages and work without JavaScript. Never publish local runtime/configuration data.
 
 Preview: `node preview.mjs`, then open http://127.0.0.1:4173. Stop with Ctrl+C.
 
@@ -15,7 +15,7 @@ Deploy the static root of `main` through GitHub Pages. Keep `.nojekyll`. Commit 
 
 The download counter sums ZIP and EXE release-asset downloads from the repository configured in `releases.json`. Source-code archives are not counted. For restricted/private downloads the counter explicitly says that counts are not public and makes no GitHub API request. Public API errors display an unavailable state; no visitor analytics or click tracking is used.
 
-The current ZIP is the unsigned 0.9.5 beta / build 20261101.67 from the private application repository. Both languages visibly identify it as beta and explain that GitHub repository access is required. The public website does not grant that access or expose credentials. The Windows installer remains unavailable. Do not mark the ZIP as public until its hosting/access and the application's distribution prerequisites have actually been resolved.
+The prepared download is the unsigned MIT-licensed 0.9.5 beta / build 20261104.78 from the public website release repository. This local change is pending publication: upload and verify the ZIP and checksum before pushing the download links. The Windows installer remains unavailable. Third-party components retain their original licenses; MIT is not a digital signature. Application source and license links are shown in both language versions.
 
 ## Screenshot gallery
 
