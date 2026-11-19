@@ -1,14 +1,14 @@
 {
-    "version":  "0.9.5 beta / 20261119.04",
-    "channel":  "beta",
-    "build":  "20261119.04",
-    "sizeBytes":  129941138,
-    "access":  "public",
-    "repository":  "rathousky-pro/file-compass-web",
-    "sourceRepository":  "rathousky-pro/file-compass",
-    "license":  "MIT",
-    "zip":  "https://github.com/rathousky-pro/file-compass-web/releases/download/v0.9.5-beta-build.20261119.04/FileCompass-win-x64.zip",
-    "exe":  null,
-    "notes":  "https://github.com/rathousky-pro/file-compass-web/releases/tag/v0.9.5-beta-build.20261119.04",
-    "checksum":  "https://github.com/rathousky-pro/file-compass-web/releases/download/v0.9.5-beta-build.20261119.04/FileCompass-win-x64.zip.sha256"
+  "version": "0.9.5 beta / 20261119.15",
+  "channel": "beta",
+  "build": "20261119.15",
+  "sizeBytes": 130455764,
+  "access": "public",
+  "repository": "rathousky-pro/file-compass-web",
+  "sourceRepository": "rathousky-pro/file-compass",
+  "license": "MIT",
+  "zip": "https://github.com/rathousky-pro/file-compass-web/releases/download/v0.9.5-beta-build.20261119.15/FileCompass-win-x64.zip",
+  "exe": null,
+  "notes": "https://github.com/rathousky-pro/file-compass-web/releases/tag/v0.9.5-beta-build.20261119.15",
+  "checksum": "https://github.com/rathousky-pro/file-compass-web/releases/download/v0.9.5-beta-build.20261119.15/FileCompass-win-x64.zip.sha256"
 }
